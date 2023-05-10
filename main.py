@@ -8,8 +8,8 @@ from azure.mgmt.resource import ResourceManagementClient
 # Read Azure subscription ID from environment variable
 subscription_id = automationassets.get_automation_variable("AZURE_SUBSCRIPTION_ID")
 resource_group = automationassets.get_automation_variable("RESOURCE_GROUP")
-tag_key = 'test'
-tag_value = 'delete'
+tag_key = <key>
+tag_value = <value>
 
 # Initialize Azure credentials
 credential = DefaultAzureCredential()
@@ -34,4 +34,4 @@ for disk in disks:
 for disk in unattached_disks:
     resource_client.resources.begin_delete_by_id(disk.id, api_version='2023-01-02')
     # print the name of the deleted disk
-    # print("Deleted disks:", disk.name)
+    print("Deleted disks:", disk.name)
