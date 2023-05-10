@@ -28,7 +28,7 @@ for disk in compute_client.disks.list_by_resource_group(resource_group):
 unattached_disks = []
 for disk in disks:
     if disk.managed_by is None and disk.disk_state == 'Unattached':
-        if tag_key in disk.tags and disk.tags[tag_key] == tag_value:
+        if (disk.tags and tag_key in disk.tags and disk.tags[tag_key] == tag_value) or not disk.tags:
             unattached_disks.append(disk)
 
 for disk in unattached_disks:
